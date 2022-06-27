@@ -1,0 +1,45 @@
+<ion-menu side="start" menuId="first" content-id="main">
+  <ion-header>
+    <ion-toolbar color="success">
+      <ion-title>{{currentUserData.userName}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle auto-hide="true">
+        <ion-item *ngIf = "displayLogInMenu" (click) = "logIn()">
+          <ion-label>login</ion-label>
+        </ion-item>
+
+        <ion-item *ngIf = "displaySignUpMenu" (click) = "signUp()">
+          <ion-label>create an account</ion-label>
+        </ion-item>
+
+        
+        <ion-item *ngIf = "displayLogOutMenu" (click)="logOut()">
+           <ion-label>Logout</ion-label>
+        </ion-item>
+      
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-modal  [isOpen] = "displayLogInPage">
+    <ng-template>
+        <ion-content>
+            <app-login (loggedInEvent) = "loggedIn($event)"></app-login>
+            <ion-button  (click) = "closeLogInPage()" expand="block">Close</ion-button>
+        </ion-content>
+    </ng-template>
+</ion-modal>
+
+<ion-modal  [isOpen] = "displaySignUpPage">
+  <ng-template>
+      <ion-content>
+          <app-signup  (signedUpEvent) = "signedUp($event)"></app-signup>
+          <ion-button  (click) = "closeSignUpPage()" expand="block">Close</ion-button>
+      </ion-content>
+  </ng-template>
+</ion-modal>

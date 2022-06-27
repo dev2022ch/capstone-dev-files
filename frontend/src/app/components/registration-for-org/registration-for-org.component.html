@@ -1,0 +1,14 @@
+
+
+    User Name:{{regForOrg.userID}}
+
+
+    Status: {{regForOrg.status}}<br>
+    Number of Persons: {{regForOrg.numPers}}<br>
+    <div *ngIf = "regForOrg.msgByGoer != ''" >
+        Special Message:  {{regForOrg.msgByGoer}}
+    </div>
+    <div *ngIf = "regForOrg.noteByOrg != ''" >
+        Organizer's Note:   {{regForOrg.noteByOrg}}
+    </div>    
+

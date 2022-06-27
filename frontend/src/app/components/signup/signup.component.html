@@ -1,0 +1,29 @@
+<h2>Register</h2>
+<form [formGroup]="signUpForm">
+    <div class="mb-3">
+        <label class="form-label">User Name</label>
+        <input type="text" class="form-control" formControlName="userName">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" formControlName="passWord">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Email address</label>
+        <input type="email" class="form-control" formControlName="email">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Phone</label>
+        <input type="text" class="form-control" formControlName="phone">
+    </div>
+    Upload Image
+    <ion-item>
+ 
+        <ion-input type="file" (change)="onFileChange($event)"></ion-input>
+      </ion-item>
+    
+    <button type="submit" class="btn btn-primary" (click)="signUp()">Submit</button>
+</form>

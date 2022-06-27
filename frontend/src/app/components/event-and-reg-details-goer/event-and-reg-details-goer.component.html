@@ -1,0 +1,61 @@
+<ion-card>
+
+    <img  [src] = "thisImage"/>
+
+    <ion-card-header>
+      <ion-card-title>{{thisEvent.eventName}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+        <ion-text>
+          {{thisEvent.details}} <br><br>
+        </ion-text>
+ 
+        <h1 class="fw-bold">Registration</h1>
+
+        <form [formGroup] = "formRegist">
+
+          <ion-item>
+            <ion-label position="floating">Total Number of Persons</ion-label>
+            <ion-input formControlName = "numPers" ></ion-input>
+          </ion-item>
+
+            
+          <ion-item>
+            <ion-label position="floating">Adults</ion-label>
+            <ion-input formControlName = "numAdults"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Toddlers & Enfants</ion-label>
+            <ion-input formControlName = "numTodEnf"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Older Children</ion-label>
+            <ion-input formControlName = "numTodUp"></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label position="floating">Special Request:</ion-label>
+            <ion-textarea formControlName = "msgByGoer" ></ion-textarea>
+          </ion-item>
+        
+          <ion-row >
+            <ion-col class="col-8">
+              <ion-label><span class="fw-bold text-danger">STATUS:</span><br>{{textStatus}}</ion-label>
+            </ion-col>
+
+
+
+            <ion-col class="col-4">
+              <ion-button color="success" (click) = "onRegister()" >Register</ion-button>
+            </ion-col>
+          </ion-row>
+
+            <ion-text slot="start" class = "cancelStyle"> Cancel Registration</ion-text>
+
+
+      </form>
+    </ion-card-content>
+</ion-card>

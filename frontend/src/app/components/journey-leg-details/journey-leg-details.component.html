@@ -1,0 +1,114 @@
+<ion-card>
+
+  <ion-card-header>
+    <ion-card-title color = "success">Journey Leg Details</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <form [formGroup] = "formJourneyLeg" class = "formText">
+
+      <ion-item>
+        <ion-label position="floating">Event:</ion-label>
+          <ion-select formControlName = "regID" (ionChange)="selectEvent($event)"  interface="popover">
+            <div *ngFor = "let e of eventsByGoer" >
+              <ion-select-option class = "formText" [value]= "e.regID" >{{e.Event.dateFrom | date:'yyyy-MM-dd'}} to 
+                {{e.Event.dateTo | date:'yyyy-MM-dd'}}, {{e.Event.city}}, {{e.Event.eventName}}</ion-select-option>
+            </div>
+          </ion-select>
+      </ion-item>
+        
+      <div *ngIf = "regEventSelected != null" >
+        <app-event-summary [userType] = "userTypes.GOER" [event]="regEventSelected.Event" [regForGoer] = "regEventSelected" [thisImage] = "eventImage"></app-event-summary>
+      </div>
+        
+
+      <ion-item>
+        <ion-label position="floating">From</ion-label>
+        <ion-input formControlName = "tripFrom" ></ion-input>
+      </ion-item>
+
+        
+      <ion-item>
+        <ion-label position="floating">On</ion-label>
+        <ion-input type="date" formControlName = "dateFrom"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">To</ion-label>
+        <ion-input formControlName = "tripTo" ></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating">On</ion-label>
+        <ion-input type="date" formControlName = "dateTo"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Mode of Transport</ion-label>
+          <ion-select formControlName = "transMode" interface="popover">
+            <ion-select-option [value]= "transModeOptions.AIR">{{transModeOptions.txtAIR}}</ion-select-option>
+            <ion-select-option [value]= "transModeOptions.TRAIN">{{transModeOptions.txtTRAIN}}</ion-select-option>
+            <ion-select-option [value]= "transModeOptions.MOTOR_VEHECLE">{{transModeOptions.txtMOTOR_VEHECLE}}</ion-select-option>
+            <ion-select-option [value]= "transModeOptions.SHIP">{{transModeOptions.txtSHIP}}</ion-select-option>
+            <ion-select-option [value]= "transModeOptions.OTHER">{{transModeOptions.txtOTHER}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Cost of Transport</ion-label>
+        <ion-input formControlName = "costTrans"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label position="floating">One Way or Round Trip</ion-label>
+          <ion-select  formControlName = "OWRndTrip" interface="popover">
+            <ion-select-option [value] = "oneRndOptions.ONE_WAY">{{oneRndOptions.txtONE_WAY}}</ion-select-option>
+            <ion-select-option [value] = "oneRndOptions.ROUND_TRIP">{{oneRndOptions.txtROUND_TRIP}}</ion-select-option>
+          </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Stay at</ion-label>
+        <ion-input formControlName = "addrAccomd"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">From</ion-label>
+        <ion-input type="date" formControlName = "dateStayStart"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">To</ion-label>
+        <ion-input type="date" formControlName = "dateStayEnd"></ion-input>
+      </ion-item>
+      
+
+      <ion-item>
+        <ion-label position="floating">Type of Accommodation</ion-label>
+        <ion-select formControlName = "accomType" interface="popover">
+          <ion-select-option [value] = "accomTypes.HOTEL">{{accomTypes.txtHOTEL}}</ion-select-option>
+          <ion-select-option [value] = "accomTypes.BandB">{{accomTypes.txtBandB}}</ion-select-option>
+          <ion-select-option [value] = "accomTypes.HOSTEL">{{accomTypes.txtHOSTEL}}</ion-select-option>
+          <ion-select-option [value] = "accomTypes.HOMESTAY">{{accomTypes.txtHOMESTAY}}</ion-select-option>
+          <ion-select-option [value] = "accomTypes.OTHER">{{accomTypes.txtOTHER}}</ion-select-option>
+          </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Cost of Accommodation</ion-label>
+        <ion-input formControlName = "costAccomd"></ion-input>
+      </ion-item>
+
+      <ion-row>
+          <ion-col size="8">
+
+          </ion-col>
+
+          <ion-col size="4">
+            <ion-button color = "success" (click) = "onSave()" >Save</ion-button>
+          </ion-col>
+      </ion-row>
+
+    </form>
+  </ion-card-content>
+</ion-card>

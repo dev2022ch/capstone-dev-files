@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <ion-icon name="person-circle-outline"></ion-icon> 
+      </ion-menu-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div *ngIf = "currentUserName != 'Visitor'" class = "formText">
+    <h1> My Contacts</h1>
+    <ion-item class="ion-no-border">
+       <ion-searchbar (ionClear) = "inputChanged()" (ionInput) = "inputChanged()" [(ngModel)]="userNameInput"  placeholder="Type in a user name to search"></ion-searchbar>
+       <ion-button color = "success" (click) = "search()">Search</ion-button>
+    </ion-item>
+    
+      <ion-item>
+          <div *ngIf = "ifSearchUserName === true">
+              <div *ngIf = "existingUser === true">
+
+                  <div *ngIf = "existingContact === true" >
+                    <ion-label position="floating">{{userNameSearched}} is already a contact.</ion-label>
+                  </div> 
+
+                  <div *ngIf = "existingContact === false" >
+                    <ion-label position="floating">Send {{userNameSearched}} a message: </ion-label>
+                    <ion-textarea  [(ngModel)]="msgRequest"  rows="3" placeholder = "Send a message" ></ion-textarea>
+                    <ion-button  (click) = "sendRequest()">Send Request</ion-button>
+                  </div> 
+
+                
+              </div>
+
+              <div *ngIf = "existingUser === false">
+                <ion-label position="floating">{{userNameSearched}} does not exist.</ion-label>
+              </div>
+          </div>
+        </ion-item>
+
+    <div *ngFor = "let c of contacts" >
+
+        <app-contact [contact] = "c" (reloadEvent) = "reloadContacts()"></app-contact>
+
+    </div>
+
+
+  </div>
+</ion-content>
+

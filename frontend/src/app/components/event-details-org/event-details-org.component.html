@@ -1,0 +1,93 @@
+<ion-card>
+
+  <img [src] = "thisImage" />
+
+  <ion-card-content>
+    <form [formGroup] = "formEventForOrg" class = "formText">
+        
+      <ion-item>
+        <ion-label position="floating">Event Name(*required)</ion-label>
+        <ion-input formControlName = "eventName" ></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating">Category</ion-label>
+        <ion-input formControlName = "category" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">From(*required)</ion-label>
+        <ion-input type="date" formControlName = "dateFrom"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">To(*required)</ion-label>
+        <ion-input type="date" formControlName = "dateTo"></ion-input>
+      </ion-item>
+        
+      <ion-item>
+        <ion-label position="floating">Street Address</ion-label>
+        <ion-input formControlName = "addrStreet" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">City(*required)</ion-label>
+        <ion-input formControlName = "city" ></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating">Province/State</ion-label>
+        <ion-input formControlName = "provState" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Country</ion-label>
+        <ion-input formControlName = "country" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label position="floating">Summary</ion-label>
+          <ion-textarea formControlName = "summary"></ion-textarea>
+      </ion-item>
+          
+      <ion-item>
+          <ion-label position="floating">Details</ion-label>
+          <ion-textarea formControlName = "details"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Fees</ion-label>
+        <ion-input formControlName = "fees" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Max # of Persons</ion-label>
+        <ion-input formControlName = "capPers" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Max # of Older Children</ion-label>
+        <ion-input formControlName = "capTodUp" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Max # of Toddlers & Enfants</ion-label>
+        <ion-input formControlName = "capTodEnf" ></ion-input>
+      </ion-item>
+
+       Upload Image
+      <ion-item>
+        <ion-input type="file" (change)="onFileChange($event)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-button color = "success" (click) = "onSave()" >Save</ion-button>
+      </ion-item>
+    </form>
+  </ion-card-content>
+</ion-card>
+  
+
+
+
+

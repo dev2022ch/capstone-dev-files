@@ -1,0 +1,44 @@
+
+
+<div *ngIf = "contact.status === thisStatus.PENDING">
+    <ion-grid *ngIf = "contact.reqDirection === thisDirection.TO_CONTACT">
+      <ion-row>
+        <ion-col  size="8">
+          <ion-label >{{contact.contactUserName}}</ion-label>
+        </ion-col>
+  
+        <ion-col  size="4">
+          <ion-label >PENDING</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+
+    <div *ngIf = "contact.reqDirection === thisDirection.FROM_CONTACT">
+  
+          {{contact.contactUserName}} sent you a request:<br>
+
+          "{{contact.msgRequest}}""
+  
+        
+        <ion-item>
+          <ion-button color = "success" (click) = "confirmRequest()">Confirm</ion-button>
+          <ion-button  (click) = "declineRequest()">Decline</ion-button>
+        </ion-item>
+    </div>
+</div>
+
+<div *ngIf = "contact.status === thisStatus.CONFIRMED">
+
+    <ion-row>
+      <ion-col size="8">
+         <ion-label >{{contact.contactUserName}}</ion-label>
+      </ion-col>
+
+      <ion-col size="4">
+         <ion-label color = "primary" class = "cancelStyle" (click) = "deleteContact()" >Delete</ion-label>
+      </ion-col>
+    </ion-row>
+
+</div>

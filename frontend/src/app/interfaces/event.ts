@@ -1,0 +1,19 @@
+export interface IEvent {
+    eventID:number;
+    orgID:number;
+    eventName:string;
+    dateFrom:Date;
+    dateTo:Date;
+    addrStreet:string;
+    city:string;
+    provState:string;
+    country:string;
+    category:string;
+    summary:string;
+    details:string;
+    fees:number;
+    capPers:number;
+    capTodUp:number;
+    capTodEnf:number;
+    image:string;
+}

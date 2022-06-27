@@ -1,0 +1,54 @@
+
+<ion-grid>
+  <ion-row class = "textInJourneyDetailList">
+     <ion-col size="4">
+      {{journeyLeg.dateFrom  | date:'yyyy-MM-dd'}}<br>
+      {{journeyLeg.tripFrom}}
+    </ion-col>
+    <ion-col size="2">
+      to
+    </ion-col>
+    <ion-col size="4">
+      {{journeyLeg.dateTo | date:'yyyy-MM-dd'}}<br>
+      {{journeyLeg.tripTo}}
+    </ion-col>
+
+    <ion-col size="1">
+
+    </ion-col>
+
+    <ion-col size="1">
+      <ion-button color="success"  (click) = "showDetails()" > 
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+
+  </ion-row>
+</ion-grid>
+
+ <ion-modal [isOpen] = "detailMode" >
+    <ng-template>
+      <ion-content>
+          <app-journey-leg-details [journeyLegDetails]="journeyLeg" (updateLegEvent) = "updateLeg($event)"></app-journey-leg-details>
+
+          <ion-item>
+            <ion-button (click) = "closeDetails()" expand="block">
+              <ion-icon name="arrow-back-outline"></ion-icon>
+              Back
+            </ion-button>
+        </ion-item>
+
+
+      </ion-content>
+  </ng-template>
+</ion-modal>
+
+  
+  
+  
+  
+  
+  
+
+  
+  

@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <ion-icon name="person-circle-outline"></ion-icon> 
+      </ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+   <h1>Events and Registrations</h1>
+   <h5>Create and Manage</h5>
+
+    <ion-fab vertical="top" horizontal="end" slot="fixed" edge>
+      <ion-fab-button (click) = "onCreate()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <ion-modal [isOpen] = "createEvent">
+        <ng-template>
+          <ion-content>
+              <app-event-details-org [thisEvent] = "null" (addEventEvent) = "addEvent($event)"></app-event-details-org>             
+              <ion-item>
+                 <ion-button  (click) = "closeCreateDetails()" expand="block">Close</ion-button>
+              </ion-item>
+          </ion-content>
+       </ng-template>
+    </ion-modal>
+  
+    <ion-list inset="true">
+      <ion-accordion-group  *ngFor = "let e of eventsRegsForOrg">
+        <ion-accordion>
+          <ion-item slot="header" class = "textInList">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="5">
+                  {{e.dateFrom | date:'yyyy-MM-dd'}} to 
+                  {{e.dateTo | date:'yyyy-MM-dd'}}
+                </ion-col>
+    
+                <ion-col size="3">
+                  {{e.city}}
+                </ion-col>
+    
+                <ion-col size="4">
+                  {{e.eventName}}
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+
+          <ion-list slot="content">
+            <ion-item>
+                <app-event-summary [userType] = "userTypes.ORGANIZER" [event] = "e" [regsForOrg]="e.Registrations" ></app-event-summary>
+            </ion-item>
+          </ion-list>
+        </ion-accordion>
+      </ion-accordion-group>
+    </ion-list>
+</ion-content>
